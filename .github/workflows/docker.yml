@@ -1,0 +1,17 @@
+name: Docker Build
+on: [push]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker Build
+        id: build
+        uses: luludotdev/docker-build@master
+        with:
+          image-name: teamspeak
+          token: ${{ secrets.GITHUB_TOKEN }}
