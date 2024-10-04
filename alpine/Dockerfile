@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.20
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec libpq tzdata libmaxminddb-dev
 RUN set -eux; \
