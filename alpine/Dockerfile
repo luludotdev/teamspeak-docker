@@ -27,9 +27,10 @@ VOLUME /var/ts3server/
 WORKDIR /var/ts3server/
 
 #  9987 default voice
-# 10011 server query
+# 10011 server query (raw)
+# 10022 server query (ssh)
 # 30033 file transport
-EXPOSE 9987/udp 10011 30033
+EXPOSE 9987/udp 10011 10022 30033
 
 COPY entrypoint.sh /opt/ts3server
 
