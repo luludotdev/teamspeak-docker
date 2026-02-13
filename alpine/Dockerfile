@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM alpine:3.23
 
-RUN apk add --no-cache ca-certificates libstdc++ su-exec libpq tzdata libmaxminddb-dev
 RUN set -eux; \
+    apk add --no-cache ca-certificates libstdc++ su-exec libpq tzdata libmaxminddb-dev; \
     addgroup -g 9987 ts3server; \
     adduser -u 9987 -Hh /var/ts3server -G ts3server -s /sbin/nologin -D ts3server; \
     install -d -o ts3server -g ts3server -m 775 /var/ts3server /var/run/ts3server /opt/ts3server
@@ -21,7 +21,8 @@ RUN set -eux; \
     rm server.tar.bz2; \
     apk del .fetch-deps; \
     mv /opt/ts3server/*.so /opt/ts3server/redist/* /usr/local/lib; \
-    ldconfig /usr/local/lib
+    ldconfig /usr/local/lib; \
+    rm -rf /opt/ts3server/redist
 
 # setup directory where user data is stored
 VOLUME /var/ts3server/
