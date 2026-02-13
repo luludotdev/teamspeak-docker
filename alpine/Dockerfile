@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM alpine:3.21
+FROM alpine:3.23
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec libpq tzdata libmaxminddb-dev
 RUN set -eux; \
