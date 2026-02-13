@@ -39,7 +39,7 @@ WORKDIR /var/ts3server/
 # 30033 file transport
 EXPOSE 9987/udp 10011 10022 30033
 
-COPY entrypoint.sh /opt/ts3server
-
-ENTRYPOINT [ "entrypoint.sh" ]
+COPY entrypoint.sh health.sh /opt/ts3server/
+ENTRYPOINT [ "/opt/ts3server/entrypoint.sh" ]
+HEALTHCHECK --timeout=5s --start-period=15s CMD /opt/ts3server/health.sh
 CMD [ "ts3server" ]
